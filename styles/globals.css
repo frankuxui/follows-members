@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: hsl(210, 11%, 79%);
+}
+.break-inside {
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+}
+
+
+
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+  border: 0;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.card .card-img {
+  border-radius: 1rem;
+}
+.card .card-header {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.card-header, .card-footer {
+  background-color: transparent;
+  border: 0;
+}
+.card-header, .card-body, .card-footer {
+  padding: 1.5rem;
+}
+.card-content.card-focus:focus, .card-content.card-focus:active {
+  border-radius: 1rem;
+}
+.card-footer-action {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+}
+.card {
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.card-content.card-focus:focus, .card-content.card-focus:active {
+  transition: all 0.1s ease-in-out;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #000;
+}
+.card-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card-media-link {
+  color: #000;
+  text-decoration: none;
+}
+.--card-subtitle {
+  font-size: 0.875rem;
+}
+.card-avatar-container {
+  margin-bottom: 1rem;
+}
+.card-avatar {
+  border-radius: 50%;
+}
+.card-footer-action {
+  text-align: center;
+}
+.card-footer-action .sswp {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  background: transparent;
+  font-weight: 500;
+  text-decoration: none;
+  appearance: none;
+  border: 0;
+  display: block;
+  width: 100%;
+  padding: 1.5rem 0;
+  transition: all 0.3s ease-in-out;
+}
+.card-footer-action .sswp:active, .card-footer-action .sswp:focus {
+  background-color: #ecf1f4;
+}
+.js-animation .js-delay {
+  transform: scale(0);
+}
+.js-animation .js-delay.animated {
+  transform: scale(1);
+  filter: FlipH;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.no-js .js-animation .js-delay.animated {
+  transform: scale(1);
+}
+.loader-container {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.fetch-error-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10rem;
+}
+.fetch-error-content .fetch-error-icon {
+  font-size: 3rem;
+  font-weight: 900;
+}
+.fetch-error-content p {
+  color: #35393f;
+}
