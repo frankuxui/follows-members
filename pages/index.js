@@ -1,14 +1,21 @@
 import Router from 'next/router'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Layout from '../components/Layout';
 import Masonry from 'react-masonry-component'
 import { Container, Col, Card } from "react-bootstrap"
-
 import Media from '../components/Media'
 import Avatar from '../components/Avatar'
 
 
+export default function Users({users}){
+  console.log(users);
+  const [loading, setLoading] = useState(false);
+  const [follow, setFollow] = useState(false);
 
-const Index = (props) => {
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 3000);
+  }, []);
 
   useEffect(() => {
     const speed = 900;
@@ -28,45 +35,50 @@ const Index = (props) => {
 
 
   return (
-    <Container>
+    <Layout>
       <Masonry className="row js-animation">
         {
-          props.users.map((user) =>(
+          users.map((user, index) =>(
             <Col sm={6} md={4} lg={2} key={user.id}>
-              <Card className="js-animation js-delay card animated" onClick={e => Router.push('/profile/[id]', `/profile/${user.id}`)}>
-                <div className="card-content card-focus">
-                  <Card.Body>
-                    <Media 
-                      first_name={ user.first_name } 
-                      last_name={ user.last_name } 
-                      state={ user.email }>
-                      <Avatar size="90" avatar={ user.avatar }></Avatar>
-                    </Media>
-                  </Card.Body>
+              <Card className="js-animation js-delay card">
+                <div className="card-focus">
+                  <Link className="card-content" href={`/profile/[id]`} as={`/profile/${user.id}`}>
+                    <Card.Body>
+                      <Media 
+                        first_name={ user.first_name } 
+                        last_name={ user.last_name } 
+                        email={ user.email }>
+                        <Avatar size="90" avatar={ user.avatar }></Avatar>
+                      </Media>
+                    </Card.Body>
+                  </Link>
                   <Card.Footer className="p-0">
                     <div className="card-footer-action">
-                      <button className="sswp">
-                        Follow
+                      <button className="sswp" onClick={()=> setFollow(index)}>
+                        {follow === index ? "Following" : "Follow" }
                       </button>
                     </div>
                   </Card.Footer>
-                </div>
+                  </div>
               </Card>
             </Col>
           ))
         }
-        
       </Masonry>
-    </Container>
-    
+    </Layout>
   )
 }
 
 
-Index.getInitialProps = async (ctx) => {
+
+
+export async function getServerSideProps(context){
   const res = await fetch('https://reqres.in/api/users')
-  const jason = await res.json()
-  return { users: jason.data}
+  const users = await res.json();
+  return {
+    props: {
+      users: users.data
+    }
+  }
 }
 
-export default Index

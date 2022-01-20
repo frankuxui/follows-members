@@ -1,0 +1,56 @@
+.Screen{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  opacity: 0;
+  animation: fade 0.4s ease-in forwards;
+  background: hsl(210, 11%, 79%);
+}
+@keyframes fade {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.Balls{
+  display: flex;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Ball{
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  margin: 0 6px 0 0;
+  animation: oscillate 0.7s ease-in forwards infinite;
+}
+.one {
+  animation-delay: 0.5s;
+}
+.two {
+  animation-delay: 1s;
+}
+.three {
+  animation-delay: 2s;
+}
+
+@keyframes oscillate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

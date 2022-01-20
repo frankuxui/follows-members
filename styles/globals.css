@@ -12,9 +12,12 @@ body {
   break-inside: avoid;
 }
 
+.App{
+  min-height: 100vh;
+  padding-top: 3rem;
+}
 
-
-
+/* Cards */
 .card {
   position: relative;
   display: flex;
@@ -29,9 +32,7 @@ body {
   margin-bottom: 1rem;
   cursor: pointer;
 }
-.card .card-img {
-  border-radius: 1rem;
-}
+
 .card .card-header {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -43,9 +44,6 @@ body {
 .card-header, .card-body, .card-footer {
   padding: 1.5rem;
 }
-.card-content.card-focus:focus, .card-content.card-focus:active {
-  border-radius: 1rem;
-}
 .card-footer-action {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -55,11 +53,17 @@ body {
   margin-bottom: 1rem;
   cursor: pointer;
 }
-.card-content.card-focus:focus, .card-content.card-focus:active {
+.card-focus:focus, .card-focus:active{
   transition: all 0.1s ease-in-out;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #000;
+  box-shadow: 0 0 0 0.2rem rgba(10, 11, 12, 0.356);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
 }
+
 .card-media {
   display: flex;
   flex-direction: column;
