@@ -1,22 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 html,
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  background-color: hsl(210, 11%, 79%);
+  background-color: #e4ebf1;
 }
 .break-inside {
   -moz-column-break-inside: avoid;
   break-inside: avoid;
 }
-
-.App{
+.main{
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  padding-top: 3rem;
 }
-
+.Content{
+  padding-top: 5rem;
+}
 /* Cards */
 .card {
   position: relative;

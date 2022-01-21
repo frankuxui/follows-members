@@ -1,15 +1,13 @@
-import Router from 'next/router'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout';
 import Masonry from 'react-masonry-component'
-import { Container, Col, Card } from "react-bootstrap"
+import { Col, Card } from "react-bootstrap"
 import Media from '../components/Media'
 import Avatar from '../components/Avatar'
 
 
 export default function Users({users}){
-  console.log(users);
   const [loading, setLoading] = useState(false);
   const [follow, setFollow] = useState(false);
 
@@ -35,36 +33,38 @@ export default function Users({users}){
 
 
   return (
-    <Layout>
-      <Masonry className="row js-animation">
-        {
-          users.map((user, index) =>(
-            <Col sm={6} md={4} lg={2} key={user.id}>
-              <Card className="js-animation js-delay card">
-                <div className="card-focus">
-                  <Link className="card-content" href={`/profile/[id]`} as={`/profile/${user.id}`}>
-                    <Card.Body>
-                      <Media 
-                        first_name={ user.first_name } 
-                        last_name={ user.last_name } 
-                        email={ user.email }>
-                        <Avatar size="90" avatar={ user.avatar }></Avatar>
-                      </Media>
-                    </Card.Body>
-                  </Link>
-                  <Card.Footer className="p-0">
-                    <div className="card-footer-action">
-                      <button className="sswp" onClick={()=> setFollow(index)}>
-                        {follow === index ? "Following" : "Follow" }
-                      </button>
+    <Layout title="Home">
+      <div className="Content">
+        <Masonry className="row js-animation">
+          {
+            users.map((user, index) =>(
+              <Col sm={6} md={4} lg={2} key={user.id}>
+                <Card className="js-animation js-delay card">
+                  <div className="card-focus">
+                    <Link className="card-content" href={`/profile/[id]`} as={`/profile/${user.id}`}>
+                      <Card.Body>
+                        <Media 
+                          first_name={ user.first_name } 
+                          last_name={ user.last_name } 
+                          email={ user.email }>
+                          <Avatar size="90" avatar={ user.avatar }></Avatar>
+                        </Media>
+                      </Card.Body>
+                    </Link>
+                    <Card.Footer className="p-0">
+                      <div className="card-footer-action">
+                        <button className="sswp" onClick={()=> setFollow(index)}>
+                          {follow === index ? "Following" : "Follow" }
+                        </button>
+                      </div>
+                    </Card.Footer>
                     </div>
-                  </Card.Footer>
-                  </div>
-              </Card>
-            </Col>
-          ))
-        }
-      </Masonry>
+                </Card>
+              </Col>
+            ))
+          }
+        </Masonry>
+      </div>
     </Layout>
   )
 }
