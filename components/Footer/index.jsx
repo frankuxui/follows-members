@@ -29,10 +29,10 @@ const index = () => {
       <p style={{ marginBottom: '.8rem'}}>Contact me on the different platforms and social networks</p>
       <div className={ styles.FooterSocial }>
         {
-          FooterContent.map(( value, index ) =>
-          <a href={ value.url } target="__blank" className={ styles.FooterSocialLink } key={ index }>
+          FooterContent.map(({url, icon}, i ) =>
+          <a href={ url } target="__blank" className={ styles.FooterSocialLink } key={ i }>
             <svg style={{ width: '25px', height: '25px' }} viewBox="0 0 24 24">
-              <path fill="currentColor" d={ value.icon }/>
+              <path fill="currentColor" d={icon}/>
             </svg>
           </a>
           )

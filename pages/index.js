@@ -7,7 +7,9 @@ import Media from '../components/Media'
 import Avatar from '../components/Avatar'
 
 
+
 export default function Users({users}){
+  
   const [loading, setLoading] = useState(false);
   const [follow, setFollow] = useState(false);
 
@@ -37,7 +39,7 @@ export default function Users({users}){
       <div className="Content">
         <Masonry className="row js-animation">
           {
-            users.map((user, index) =>(
+            users.map((user, i) =>(
               <Col sm={6} md={4} lg={2} key={user.id}>
                 <Card className="js-animation js-delay card">
                   <div className="card-focus">
@@ -53,8 +55,8 @@ export default function Users({users}){
                     </Link>
                     <Card.Footer className="p-0">
                       <div className="card-footer-action">
-                        <button className="sswp" onClick={()=> setFollow(index)}>
-                          {follow === index ? "Following" : "Follow" }
+                        <button className="sswp" onClick={()=> setFollow(i)}>
+                          {follow === i ? "Following" : "Follow" }
                         </button>
                       </div>
                     </Card.Footer>
@@ -81,4 +83,3 @@ export async function getServerSideProps(context){
     }
   }
 }
-
