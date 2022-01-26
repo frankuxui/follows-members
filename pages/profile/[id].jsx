@@ -1,6 +1,9 @@
 import {useRouter} from 'next/router'
 import Link from 'next/link'
 import Layout from '../../components/Layout';
+import React, { useEffect, useState, useRef } from 'react'
+
+
 
 
 const Profile = ({user}) => {

@@ -2,7 +2,7 @@ import styles from './Navbar.module.css'
 import Link from 'next/link'
 const index = () => {
   return (
-    <nav className={styles.Nav}>
+    <nav className={styles.Navbar}>
       <ul className={ styles.Nav}>
         <li>
           <Link href="/">

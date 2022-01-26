@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout';
 import Masonry from 'react-masonry-component'
@@ -7,11 +7,22 @@ import Media from '../components/Media'
 import Avatar from '../components/Avatar'
 
 
-
-export default function Users({users}){
+const Users = ({users}) => {
   
   const [loading, setLoading] = useState(false);
   const [follow, setFollow] = useState(false);
+  
+  const handleToggle = (e) => {
+    //setFollow(!follow)
+    let target = e.target
+    //target.innerText = follow ? 'Following' : 'Follow'
+    //console.log(e.target)
+    if (target.innerHTML === "Follow") {
+      target.innerHTML = "Following";
+    } else {
+      target.innerHTML = "Follow";
+    }
+  }
 
   useEffect(() => {
     setTimeout(() => setLoading(true), 3000);
@@ -29,11 +40,10 @@ export default function Users({users}){
         elementOffset.style.transitionDelay = delay+ 's'
         elementOffset.classList.add('animated')
         //console.log(delay + ' delay item');
-      });
-    });
+      })
+    })
   })
-
-
+  
   return (
     <Layout title="Home">
       <div className="Content">
@@ -55,8 +65,8 @@ export default function Users({users}){
                     </Link>
                     <Card.Footer className="p-0">
                       <div className="card-footer-action">
-                        <button className="sswp" onClick={()=> setFollow(i)}>
-                          {follow === i ? "Following" : "Follow" }
+                        <button className="sswp" onClick={handleToggle}>
+                          Follow
                         </button>
                       </div>
                     </Card.Footer>
@@ -71,11 +81,10 @@ export default function Users({users}){
   )
 }
 
-
-
+export default Users
 
 export async function getServerSideProps(context){
-  const res = await fetch('https://reqres.in/api/users')
+  const res = await fetch('https://reqres.in/api/users?per_page=12')
   const users = await res.json();
   return {
     props: {
