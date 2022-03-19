@@ -1,24 +1,19 @@
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Layout from '../../components/Layout';
-import React, { useEffect, useState, useRef } from 'react'
+import Layout from '../../components/Layout'
 
-
-
-
-const Profile = ({user}) => {
-  const router = useRouter();
-  const {id} = router.query;
-  
+const Profile = ({ user }) => {
+  const router = useRouter()
+  const { id } = router.query
   return (
     <Layout>
-      <div className="Content">
-        <Link href="/">
+      <div className='Content'>
+        <Link href='/'>
           <a>Goback</a>
         </Link>
         <h1>Profile del usuario</h1>
-        <img src={user.avatar}/>
-        <h2>{ user.first_name} { user.last_name}</h2>
+        <img src={user.avatar} />
+        <h2>{user.first_name} {user.last_name}</h2>
       </div>
     </Layout>
   )

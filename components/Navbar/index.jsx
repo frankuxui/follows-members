@@ -3,25 +3,25 @@ import Link from 'next/link'
 const index = () => {
   return (
     <nav className={styles.Navbar}>
-      <ul className={ styles.Nav}>
+      <ul className={styles.Nav}>
         <li>
-          <Link href="/">
+          <Link href='/'>
             <a>Home</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href='/'>
             <a>Blogs</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href='/'>
             <a>About</a>
           </Link>
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default index;
+export default index
